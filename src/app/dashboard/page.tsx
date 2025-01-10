@@ -3,6 +3,7 @@ import LogoutButton from "@/components/dashboard/LogoutButton";
 import { useGlobalContext } from "@/context/ContextApi";
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -17,7 +18,9 @@ const Dashboard = () => {
   // if (!isAuthUser) return;
   return (
     <div>
+      <ToastContainer />
       Dashboard
+      <div onClick={() => router.push("/dashboard/patients")}>Patients</div>
       <div onClick={() => router.push("/")}>home</div>
       <LogoutButton />
     </div>
