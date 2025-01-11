@@ -38,7 +38,7 @@ const Dashboard = () => {
       <ToastContainer />
       <div className="px-10 pt-10">
         <div className="flex justify-between items-center">
-          <div className="text-6xl max-md:text-4xl">Dashboard</div>
+          <div className="text-6xl max-md:text-2xl ">Dashboard</div>
           <div className="flex gap-4">
             <div
               className="flex items-center justify-center px-4 py-2 bg-blue-600 text-2xl rounded-md text-white cursor-pointer"
@@ -49,7 +49,7 @@ const Dashboard = () => {
             <LogoutButton />
           </div>
         </div>
-        <div className="mt-28 grid grid-cols-1 md:grid-cols-2 *:cursor-pointer  *:p-10 *:rounded-md gap-4 *:text-6xl">
+        <div className="mt-28 grid grid-cols-1 md:grid-cols-2 *:cursor-pointer  *:p-10 *:rounded-md gap-4 *:text-6xl *:max-lg:text-4xl">
           <div
             className="bg-green-400 hover:shadow-xl"
             onClick={() => router.push("/dashboard/patients")}

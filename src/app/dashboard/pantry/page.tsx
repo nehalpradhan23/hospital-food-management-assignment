@@ -134,17 +134,18 @@ const PantryPage = () => {
         <ToastContainer />
         <h1 className="text-5xl mt-8 mb-10 font-semibold">Staff list</h1>
         {/* <div className="mb-10 p-5 bg-green-300"> */}
-        <div className="flex justify-between">
+        <div className="flex max-md:flex-col justify-between max-md:h-[120px]">
           <span
             onClick={() => setAddStaffModal(true)}
-            className="text-2xl border rounded-full px-6 py-2 border-black/30 bg-blue-600  cursor-pointer transition-all text-white hover:scale-105 w-fit"
+            className="max-md:w-full text-2xl border rounded-full px-6 py-2 border-black/30 bg-blue-600  cursor-pointer transition-all text-white hover:scale-105 w-fit"
           >
             Add a staff
           </span>
-          <Link href={"/dashboard/pantry/deliveries"}>
-            <span className="text-2xl border rounded-full px-6 py-2 border-black/30 bg-green-600  cursor-pointer transition-all text-white hover:scale-105 w-fit">
-              Deliveries page -{">"}
-            </span>
+          <Link
+            href={"/dashboard/pantry/deliveries"}
+            className="max-md:w-full text-2xl border rounded-full px-6 py-2 border-black/30 bg-green-600  cursor-pointer transition-all text-white hover:scale-105"
+          >
+            <span>Deliveries page -{">"}</span>
           </Link>
         </div>
         {/* </div> */}
