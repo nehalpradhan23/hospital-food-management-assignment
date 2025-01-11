@@ -5,6 +5,10 @@ export interface GlobalContextType {
     isAuthUser: boolean | undefined;
     setIsAuthUser: React.Dispatch<React.SetStateAction<boolean | undefined>>;
   };
+  patientsObject: {
+    storeAllPatients: Patient[];
+    setStoreAllPatients: React.Dispatch<React.SetStateAction<Patient[] | []>>;
+  };
 }
 
 export interface Patient {

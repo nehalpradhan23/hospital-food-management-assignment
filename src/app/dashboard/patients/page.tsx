@@ -12,7 +12,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 const PatientPage = () => {
   const {
-    userObject: { isAuthUser, setIsAuthUser, setUser },
+    patientsObject: { storeAllPatients, setStoreAllPatients },
   } = useGlobalContext();
 
   const [allPatients, setAllPatients] = useState<Patient[] | []>([]);
@@ -35,6 +35,7 @@ const PatientPage = () => {
       const response = await axios.get("/api/patient");
       // console.log(response);
       setAllPatients(response.data.data);
+      setStoreAllPatients(response.data.data);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -45,8 +46,9 @@ const PatientPage = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
-    getPatientsData();
+    // setLoading(true);
+    setAllPatients(storeAllPatients);
+    // getPatientsData();
   }, []);
 
   // ===========================================================

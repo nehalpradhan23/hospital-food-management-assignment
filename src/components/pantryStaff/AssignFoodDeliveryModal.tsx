@@ -42,7 +42,7 @@ const AssignFoodDeliveryModal = ({
       {/* <ToastContainer /> */}
       <div className="bg-white w-[80%] md:w-[60%] xl:w-[40%] h-fit rounded-md p-5 flex flex-col">
         <div className="text-2xl mb-6 flex justify-between">
-          <h1 className="font-semibold">Add preparation task</h1>
+          <h1 className="font-semibold">Add delivery task</h1>
           <span onClick={() => onClose(false)} className="cursor-pointer">
             Close
           </span>

@@ -66,7 +66,7 @@ const FoodDietChart = ({
   return (
     <div className="absolute flex items-center justify-center w-screen h-screen bg-black/25 z-10">
       {/* <ToastContainer /> */}
-      <div className="bg-white w-[80%] md:w-[60%] xl:w-[40%] h-[80%] rounded-md p-5 overflow-scroll flex flex-col">
+      <div className="bg-white w-[80%] md:w-[60%] xl:w-[40%] h-[80%] rounded-md p-5 flex flex-col">
         <div className="text-2xl mb-6 flex justify-between">
           <h1 className="font-bold">
             {currentPatientDietChart.patientName} Diet Chart

@@ -31,6 +31,7 @@ const page = () => {
     setCurrentSelectedStaff(staff);
   };
 
+  // =====================================
   const getStaffData = async () => {
     try {
       const response = await axios.get("/api/pantry");
@@ -113,7 +114,7 @@ const page = () => {
                 <th className="">Name</th>
                 <th>Contact</th>
                 <th>Location</th>
-                <th>Food preparation</th>
+                <th>Food preparation task</th>
                 <th>Delivery task</th>
               </tr>
             </thead>

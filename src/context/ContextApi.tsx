@@ -1,5 +1,5 @@
 "use client";
-import { GlobalContextType } from "@/types/types";
+import { GlobalContextType, Patient } from "@/types/types";
 import { createContext, useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
@@ -11,6 +11,10 @@ const ContextProvider = createContext<GlobalContextType>({
     isAuthUser: undefined,
     setIsAuthUser: () => {},
   },
+  patientsObject: {
+    storeAllPatients: [],
+    setStoreAllPatients: () => {},
+  },
 });
 
 export default function GlobalContextProvider({
@@ -20,7 +24,7 @@ export default function GlobalContextProvider({
 }) {
   const [user, setUser] = useState<undefined>(undefined);
   const [isAuthUser, setIsAuthUser] = useState<boolean | undefined>(undefined);
-
+  const [storeAllPatients, setStoreAllPatients] = useState<Patient[] | []>([]);
   // const router = useRouter();
 
   // authenticate ---------------------------
@@ -39,6 +43,7 @@ export default function GlobalContextProvider({
     <ContextProvider.Provider
       value={{
         userObject: { user, setUser, isAuthUser, setIsAuthUser },
+        patientsObject: { storeAllPatients, setStoreAllPatients },
       }}
     >
       {children}
