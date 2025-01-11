@@ -19,4 +19,15 @@ export interface Patient {
   patientGender: string;
   contactInfo: string;
   emergencyContact: string;
+  foodChart: {
+    morningIngredients: string;
+    morningMeal: string;
+    morningOthers: string;
+    eveningMeal: string;
+    eveningIngredients: string;
+    eveningOthers: string;
+    nightMeal: string;
+    nightIngredients: string;
+    nightOthers: string;
+  };
 }

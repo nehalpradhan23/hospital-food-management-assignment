@@ -79,7 +79,9 @@ const EditPatientModal = ({
       {/* <ToastContainer /> */}
       <div className="bg-white w-[80%] md:w-[60%] xl:w-[40%] h-[80%] rounded-md p-5 overflow-scroll flex flex-col">
         <div className="text-2xl mb-6 flex justify-between">
-          <h1 className="font-bold">Add patient details</h1>
+          <h1 className="font-bold">
+            Edit {currentEditingPatient.patientName} details
+          </h1>
           <span
             onClick={() => setEditingPatient(false)}
             className="cursor-pointer"

@@ -141,3 +141,31 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "EDIT error" });
   }
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const { patientId } = await request.json();
+    if (!patientId) {
+      return NextResponse.json(
+        { message: "Need id to delete" },
+        { status: 400 }
+      );
+    }
+    await connect();
+    const patientToDelete = await Patient.findOneAndDelete({
+      _id: patientId,
+    });
+
+    if (!patientToDelete) {
+      return NextResponse.json(
+        { message: "patient not found" },
+        { status: 404 }
+      );
+    }
+    return NextResponse.json({ message: "Deleted successfully" });
+  } catch (error) {
+    console.log("Error deleting", error);
+
+    return NextResponse.json({ message: "Deletion failed" }, { status: 500 });
+  }
+}

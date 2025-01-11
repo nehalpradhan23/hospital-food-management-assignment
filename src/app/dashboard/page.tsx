@@ -21,6 +21,7 @@ const Dashboard = () => {
       <ToastContainer />
       Dashboard
       <div onClick={() => router.push("/dashboard/patients")}>Patients</div>
+      <div onClick={() => router.push("/dashboard/pantry")}>Pantry</div>
       <div onClick={() => router.push("/")}>home</div>
       <LogoutButton />
     </div>

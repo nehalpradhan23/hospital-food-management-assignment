@@ -1,7 +1,9 @@
 "use client";
 
 import AddPatientModal from "@/components/patient/AddPatientModal";
+import DeletePatient from "@/components/patient/DeletePatient";
 import EditPatientModal from "@/components/patient/EditPatientModal";
+import FoodDietChart from "@/components/patient/FoodDietChart";
 import { useGlobalContext } from "@/context/ContextApi";
 import { Patient } from "@/types/types";
 import axios from "axios";
@@ -19,8 +21,15 @@ const PatientPage = () => {
 
   const [addingPatientModal, setAddingPatientModal] = useState(false);
   const [editingPatientModal, setEditingPatientModal] = useState(false);
+  const [showDeletePatientModal, setShowDeletePatientModal] = useState(false);
+  const [showFoodDietChart, setShowFoodDietChart] = useState(false);
+  const [currentPatientDietChart, setCurrentPatientDietChart] =
+    useState<Patient>(undefined);
   const [currentPatientEditing, setCurrentPatientEditing] =
     useState<Patient>(undefined);
+  const [currentPatientToDelete, setCurrentPatientToDelete] =
+    useState<Patient>(undefined);
+  // =======================================================
 
   const router = useRouter();
 
@@ -42,15 +51,28 @@ const PatientPage = () => {
     getPatientsData();
   }, []);
 
+  // ===========================================================
+  const handlePatientFoodDietChart = (patient) => {
+    setShowFoodDietChart(true);
+    setCurrentPatientDietChart(patient);
+  };
+  // ===========================================================
   // console.log(allPatients);
   const handlePatientEdit = (patient: Patient) => {
     // console.log(patient);
     setCurrentPatientEditing(patient);
     setEditingPatientModal(true);
   };
+  // ===========================================================
 
   const handleSuccessPatientSave = () => {
     getPatientsData();
+  };
+
+  // ===========================================================
+  const handlePatientDelete = (patient: Patient) => {
+    setShowDeletePatientModal(true);
+    setCurrentPatientToDelete(patient);
   };
   // ===========================================================
   return (
@@ -65,6 +87,20 @@ const PatientPage = () => {
         <EditPatientModal
           setEditingPatient={setEditingPatientModal}
           currentEditingPatient={currentPatientEditing}
+          onSuccess={handleSuccessPatientSave}
+        />
+      )}
+      {showFoodDietChart && (
+        <FoodDietChart
+          currentPatientDietChart={currentPatientDietChart}
+          onClose={setShowFoodDietChart}
+          onSuccess={handleSuccessPatientSave}
+        />
+      )}
+      {showDeletePatientModal && (
+        <DeletePatient
+          onClose={setShowDeletePatientModal}
+          patient={currentPatientToDelete}
           onSuccess={handleSuccessPatientSave}
         />
       )}
@@ -85,6 +121,8 @@ const PatientPage = () => {
             <thead className="border border-black">
               <tr className="*:border *:border-black *:py-2">
                 <th></th>
+                <th></th>
+                <th className="">Food/diet chart</th>
                 <th>Patient Name</th>
                 <th>Diseases</th>
                 <th>Allergies</th>
@@ -109,6 +147,20 @@ const PatientPage = () => {
                       onClick={() => handlePatientEdit(patient)}
                     >
                       Edit
+                    </button>
+                  </td>
+                  <td
+                    className="text-center hover:bg-red-500 cursor-pointer"
+                    onClick={() => handlePatientDelete(patient)}
+                  >
+                    <button className="">🗑️</button>
+                  </td>
+                  <td>
+                    <button
+                      className="text-blue-800 font-semibold"
+                      onClick={() => handlePatientFoodDietChart(patient)}
+                    >
+                      View
                     </button>
                   </td>
                   <td>{patient.patientName}</td>

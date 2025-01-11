@@ -23,19 +23,6 @@ const AddPatientModal = ({
   const [emergencyContact, setEmergencyContact] = useState("");
 
   const handleSavePatient = async () => {
-    console.log(
-      patientName,
-      diseases,
-      allergies,
-      roomNumber,
-      bedNumber,
-      floorNumber,
-      patientAge,
-      patientGender,
-      contactInfo,
-      emergencyContact
-    );
-
     try {
       const response = await axios.post("/api/patient", {
         patientName,
