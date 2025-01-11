@@ -99,10 +99,10 @@ const DeliveriesPage = () => {
               >
                 {/* delete ============================== */}
                 <td
-                  className="text-center hover:bg-green-500"
+                  className="text-center text-green-600 hover:bg-green-500 hover:text-black"
                   onClick={() => handleRemoveTask(staff._id)}
                 >
-                  <button className="font-semibold hover:underline">
+                  <button className="font-bold hover:underline  underline">
                     Mark as delivered
                   </button>
                 </td>

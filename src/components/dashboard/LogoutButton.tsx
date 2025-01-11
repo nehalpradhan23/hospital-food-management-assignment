@@ -14,7 +14,14 @@ const LogoutButton = () => {
     setIsAuthUser(false);
     Cookies.remove("hospitalManagementAssignmentToken");
   };
-  return <div onClick={handleLogout}>LogoutButton</div>;
+  return (
+    <div
+      onClick={handleLogout}
+      className="text-2xl rounded-md text-white cursor-pointer bg-red-400 px-4 py-2"
+    >
+      Logout
+    </div>
+  );
 };
 
 export default LogoutButton;
