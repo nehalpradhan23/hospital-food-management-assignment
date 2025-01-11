@@ -1,0 +1,64 @@
+"use client";
+import { PantryStaff } from "@/types/types";
+import axios from "axios";
+import React, { Dispatch, SetStateAction } from "react";
+import { toast } from "react-toastify";
+
+const ViewAssignedFoodPrepTaskModal = ({
+  onClose,
+  staff,
+  onSuccess,
+}: {
+  onClose: Dispatch<SetStateAction<boolean>>;
+  staff: PantryStaff;
+  onSuccess: () => void;
+}) => {
+  console.log("staff ", staff);
+
+  const handleRemoveTask = async () => {
+    try {
+      const response = await axios.put("/api/pantry/foodPreparation", {
+        id: staff._id,
+        task: "",
+      });
+
+      console.log("staff data", response.data);
+      toast(response.data.message);
+      if (response.data.data) {
+        onClose(false);
+        onSuccess();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // ==================================
+  return (
+    <div className="absolute flex items-center justify-center w-screen h-screen bg-black/25 z-10">
+      <div className="bg-white w-[80%] md:w-[60%] xl:w-[40%] h-fit rounded-md p-5 flex flex-col justify-between">
+        <div className="text-2xl mb-6 flex justify-between">
+          <h1 className="font-bold">Task assigned</h1>
+          <span onClick={() => onClose(false)} className="cursor-pointer">
+            Close
+          </span>
+        </div>
+        <div className="my-6">
+          <span className="text-2xl">{staff.staffFoodPreparationTask}</span>
+        </div>
+
+        {/* ============================== */}
+        <div className="text-center text-2xl  w-full flex items-end justify-end">
+          <button
+            className="bg-blue-500 text-white px-5 py-2 hover:bg-blue-700 rounded-md"
+            onClick={() => handleRemoveTask()}
+          >
+            Remove task
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ViewAssignedFoodPrepTaskModal;

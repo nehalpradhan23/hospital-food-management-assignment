@@ -20,13 +20,20 @@ export async function PUT(request: Request) {
       }
     );
 
-    return NextResponse.json({
-      message: "Added staff food preparation.",
-      data: updatedStaff,
-    });
+    if (task === "") {
+      return NextResponse.json({
+        message: "Removed staff food preparation.",
+        data: updatedStaff,
+      });
+    } else {
+      return NextResponse.json({
+        message: "Added staff food preparation.",
+        data: updatedStaff,
+      });
+    }
   } catch (error) {
     return NextResponse.json({
-      message: "Error with adding food preparation",
+      message: "Error with food preparation",
       error: error,
     });
   }

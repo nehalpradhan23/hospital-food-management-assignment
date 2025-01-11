@@ -14,7 +14,6 @@ const AssignFoodPreparationModal = ({
   onSuccess: () => void;
   staff: PantryStaff;
 }) => {
-  const [task, setTask] = useState("");
   const [allPatients, setAllPatients] = useState([]);
   const [loading, setLoading] = useState(false);
 

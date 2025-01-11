@@ -42,5 +42,14 @@ export interface PantryStaff {
   staffContact: string;
   staffLocation: string;
   staffFoodPreparationTask: string;
-  staffFoodDeliveryTask: string;
+  staffFoodDeliveryTask: {
+    patientName: string;
+    roomNumber: number;
+    bedNumber: number;
+    floorNumber: number;
+    mealTime: string;
+    meal: string;
+    mealIngredients: string;
+    mealOthers: string;
+  };
 }

@@ -6,13 +6,32 @@ export async function PUT(request: Request) {
   try {
     await connect();
 
-    const { id, task } = await request.json();
+    const {
+      id,
+      patientName,
+      roomNumber,
+      bedNumber,
+      floorNumber,
+      mealTime,
+      meal,
+      mealIngredients,
+      mealOthers,
+    } = await request.json();
 
     const updatedStaff = await PantryStaff.findByIdAndUpdate(
       { _id: id },
       {
         $set: {
-          staffFoodDeliveryTask: task,
+          staffFoodDeliveryTask: {
+            patientName,
+            roomNumber,
+            bedNumber,
+            floorNumber,
+            mealTime,
+            meal,
+            mealIngredients,
+            mealOthers,
+          },
         },
       },
       {
@@ -20,10 +39,17 @@ export async function PUT(request: Request) {
       }
     );
 
-    return NextResponse.json({
-      message: "Added staff food delivery task.",
-      data: updatedStaff,
-    });
+    if (patientName === "") {
+      return NextResponse.json({
+        message: "Delivered successfully.",
+        data: updatedStaff,
+      });
+    } else {
+      return NextResponse.json({
+        message: "Added staff food delivery task.",
+        data: updatedStaff,
+      });
+    }
   } catch (error) {
     return NextResponse.json({
       message: "Error with adding food delivery task",
