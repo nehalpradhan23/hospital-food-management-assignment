@@ -44,3 +44,31 @@ export async function GET() {
     return NextResponse.json({ message: "Fetch pantry staff error", error });
   }
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const { staffId } = await request.json();
+    if (!staffId) {
+      return NextResponse.json(
+        { message: "Need id to delete" },
+        { status: 400 }
+      );
+    }
+    await connect();
+    const patientToDelete = await PantryStaff.findOneAndDelete({
+      _id: staffId,
+    });
+
+    if (!patientToDelete) {
+      return NextResponse.json({ message: "staff not found" }, { status: 404 });
+    }
+    return NextResponse.json({ message: "Deleted successfully" });
+  } catch (error) {
+    console.log("Error deleting", error);
+
+    return NextResponse.json(
+      { message: "Deletion failed", error: error },
+      { status: 500 }
+    );
+  }
+}

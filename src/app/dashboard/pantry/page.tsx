@@ -2,6 +2,7 @@
 import AddStaffModal from "@/components/pantryStaff/AddStaffModal";
 import AssignFoodDeliveryModal from "@/components/pantryStaff/AssignFoodDeliveryModal";
 import AssignFoodPreparationModal from "@/components/pantryStaff/AssignFoodPreparationModal";
+import DeleteStaff from "@/components/pantryStaff/DeleteStaff";
 import { PantryStaff } from "@/types/types";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -15,9 +16,9 @@ const page = () => {
     useState(false);
   const [showFoodDeliveryTaskModal, setShowFoodDeliveryTaskModal] =
     useState(false);
-
   const [currentSelectedStaff, setCurrentSelectedStaff] =
     useState<PantryStaff>(undefined);
+  const [showDeleteStaffModal, setShowDeleteStaffModal] = useState(false);
 
   // food prep ===========================
   const handleAssignFoodPrep = (staff: PantryStaff) => {
@@ -47,6 +48,11 @@ const page = () => {
   const handleSuccessStaffSave = () => {
     getStaffData();
   };
+  // =============================
+  const handleStaffDelete = (staff: PantryStaff) => {
+    setShowDeleteStaffModal(true);
+    setCurrentSelectedStaff(staff);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -75,6 +81,14 @@ const page = () => {
       {showFoodDeliveryTaskModal && (
         <AssignFoodDeliveryModal
           onClose={setShowFoodDeliveryTaskModal}
+          onSuccess={handleSuccessStaffSave}
+          staff={currentSelectedStaff}
+        />
+      )}
+      {/* delete staff modal ================================= */}
+      {showDeleteStaffModal && (
+        <DeleteStaff
+          onClose={setShowDeleteStaffModal}
           onSuccess={handleSuccessStaffSave}
           staff={currentSelectedStaff}
         />
@@ -112,7 +126,7 @@ const page = () => {
                   {/* delete ============================== */}
                   <td
                     className="text-center hover:bg-red-500 cursor-pointer"
-                    // onClick={() => handlePatientDelete(patient)}
+                    onClick={() => handleStaffDelete(staff)}
                   >
                     <button className="">🗑️</button>
                   </td>

@@ -7,7 +7,6 @@ import FoodDietChart from "@/components/patient/FoodDietChart";
 import { useGlobalContext } from "@/context/ContextApi";
 import { Patient } from "@/types/types";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -30,8 +29,6 @@ const PatientPage = () => {
   const [currentPatientToDelete, setCurrentPatientToDelete] =
     useState<Patient>(undefined);
   // =======================================================
-
-  const router = useRouter();
 
   const getPatientsData = async () => {
     try {
