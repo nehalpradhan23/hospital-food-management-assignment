@@ -114,7 +114,7 @@ const AssignFoodPreparationModal = ({
                     patient.foodChart.nightMeal && (
                       <div className="border border-black p-2 rounded-md">
                         <span className="text-2xl font-semibold">
-                          Name: {patient.patientName}
+                          Patient Name: {patient.patientName}
                         </span>
                         <div className="mt-3 flex flex-col *:border *:border-black/50 *:rounded-md *:p-1 gap-2">
                           {/* ------------------------------------------- */}
