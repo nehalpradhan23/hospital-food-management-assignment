@@ -2,7 +2,6 @@
 import { GlobalContextType, Patient } from "@/types/types";
 import { createContext, useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import { useRouter } from "next/router";
 
 const ContextProvider = createContext<GlobalContextType>({
   userObject: {

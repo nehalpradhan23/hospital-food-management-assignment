@@ -18,16 +18,16 @@ const EditPatientModal = ({
   );
   const [diseases, setDiseases] = useState(currentEditingPatient.diseases);
   const [allergies, setAllergies] = useState(currentEditingPatient.allergies);
-  const [roomNumber, setRoomNumber] = useState<Number | any>(
+  const [roomNumber, setRoomNumber] = useState<number | any>(
     currentEditingPatient.roomNumber
   );
-  const [bedNumber, setBedNumber] = useState<Number | any>(
+  const [bedNumber, setBedNumber] = useState<number | any>(
     currentEditingPatient.bedNumber
   );
-  const [floorNumber, setFloorNumber] = useState<Number | any>(
+  const [floorNumber, setFloorNumber] = useState<number | any>(
     currentEditingPatient.floorNumber
   );
-  const [patientAge, setPatientAge] = useState<Number | any>(
+  const [patientAge, setPatientAge] = useState<number | any>(
     currentEditingPatient.patientAge
   );
   const [patientGender, setPatientGender] = useState(

@@ -1,8 +1,7 @@
 "use client";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const AddPatientModal = ({
   setAddingPatient,
@@ -14,10 +13,10 @@ const AddPatientModal = ({
   const [patientName, setPatientName] = useState("");
   const [diseases, setDiseases] = useState("");
   const [allergies, setAllergies] = useState("");
-  const [roomNumber, setRoomNumber] = useState<Number | "">("");
-  const [bedNumber, setBedNumber] = useState<Number | "">("");
-  const [floorNumber, setFloorNumber] = useState<Number | "">("");
-  const [patientAge, setPatientAge] = useState<Number | "">("");
+  const [roomNumber, setRoomNumber] = useState<number | "">("");
+  const [bedNumber, setBedNumber] = useState<number | "">("");
+  const [floorNumber, setFloorNumber] = useState<number | "">("");
+  const [patientAge, setPatientAge] = useState<number | "">("");
   const [patientGender, setPatientGender] = useState("");
   const [contactInfo, setContactInfo] = useState("");
   const [emergencyContact, setEmergencyContact] = useState("");

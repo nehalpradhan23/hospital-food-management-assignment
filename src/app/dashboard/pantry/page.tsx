@@ -11,7 +11,7 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
-const page = () => {
+const PantryPage = () => {
   const [allPantryStaff, setAllPantryStaff] = useState([]);
   const [loading, setLoading] = useState(false);
   const [addStaffModal, setAddStaffModal] = useState(false);
@@ -234,4 +234,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default PantryPage;

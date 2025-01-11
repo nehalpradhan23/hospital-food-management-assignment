@@ -1,9 +1,8 @@
 "use client";
 import { Patient } from "@/types/types";
 import axios from "axios";
-import { useRouter } from "next/navigation";
-import React, { Dispatch, SetStateAction, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import React, { Dispatch, SetStateAction } from "react";
+import { toast } from "react-toastify";
 
 const DeletePatient = ({
   onClose,

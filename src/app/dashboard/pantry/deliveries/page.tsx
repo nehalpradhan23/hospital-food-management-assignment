@@ -4,7 +4,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
-const page = () => {
+const DeliveriesPage = () => {
   const [allPantryStaff, setAllPantryStaff] = useState([]);
   const [deliveriesStaff, setDeliveriesStaff] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -154,4 +154,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default DeliveriesPage;

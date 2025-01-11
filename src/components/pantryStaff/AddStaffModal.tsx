@@ -1,8 +1,7 @@
 "use client";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 const AddPatientModal = ({
   onClose,

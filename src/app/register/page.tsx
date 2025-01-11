@@ -8,13 +8,13 @@ export default function Registration() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const [errorMessage, setErrorMessage] = useState<any>();
+  const [errorMessage, setErrorMessage] = useState(undefined);
   const {
     userObject: { isAuthUser },
   } = useGlobalContext();
   const [loading, setLoading] = useState(false);
 
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(true);
