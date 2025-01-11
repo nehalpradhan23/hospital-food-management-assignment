@@ -31,3 +31,12 @@ export interface Patient {
     nightOthers: string;
   };
 }
+
+export interface PantryStaff {
+  _id?: string;
+  staffName: string;
+  staffContact: string;
+  staffLocation: string;
+  staffFoodPreparationTask: string;
+  staffFoodDeliveryTask: string;
+}

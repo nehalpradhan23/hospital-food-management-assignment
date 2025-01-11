@@ -46,6 +46,7 @@ const PatientPage = () => {
       setLoading(false);
     }
   };
+
   useEffect(() => {
     setLoading(true);
     getPatientsData();

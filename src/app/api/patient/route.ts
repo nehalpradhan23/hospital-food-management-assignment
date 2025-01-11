@@ -55,9 +55,6 @@ export async function POST(request: Request) {
       data: newPatient,
     });
   } catch (error) {
-    if (error.code === 11000) {
-      return NextResponse.json({ message: "Patient name must be unique" });
-    }
     return NextResponse.json({ error: "POST error" });
   }
 }
