@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
-const AssignFoodPreparationModal = ({
+const AssignFoodDeliveryModal = ({
   onClose,
   onSuccess,
   staff,
@@ -22,7 +22,7 @@ const AssignFoodPreparationModal = ({
     // return;
 
     try {
-      const response = await axios.put("/api/pantry/foodPreparation", {
+      const response = await axios.put("/api/pantry/foodDelivery", {
         id: staff._id,
         task,
       });
@@ -43,7 +43,7 @@ const AssignFoodPreparationModal = ({
       {/* <ToastContainer /> */}
       <div className="bg-white w-[80%] md:w-[60%] xl:w-[40%] h-fit rounded-md p-5 flex flex-col">
         <div className="text-2xl mb-6 flex justify-between">
-          <h1 className="font-semibold">Add delivery task</h1>
+          <h1 className="font-semibold">Add preparation task</h1>
           <span onClick={() => onClose(false)} className="cursor-pointer">
             Close
           </span>
@@ -73,4 +73,4 @@ const AssignFoodPreparationModal = ({
   );
 };
 
-export default AssignFoodPreparationModal;
+export default AssignFoodDeliveryModal;

@@ -1,5 +1,6 @@
 "use client";
 import AddStaffModal from "@/components/pantryStaff/AddStaffModal";
+import AssignFoodDeliveryModal from "@/components/pantryStaff/AssignFoodDeliveryModal";
 import AssignFoodPreparationModal from "@/components/pantryStaff/AssignFoodPreparationModal";
 import { PantryStaff } from "@/types/types";
 import axios from "axios";
@@ -12,6 +13,8 @@ const page = () => {
   const [addStaffModal, setAddStaffModal] = useState(false);
   const [showFoodPreparationModal, setShowFoodPreparationModal] =
     useState(false);
+  const [showFoodDeliveryTaskModal, setShowFoodDeliveryTaskModal] =
+    useState(false);
 
   const [currentSelectedStaff, setCurrentSelectedStaff] =
     useState<PantryStaff>(undefined);
@@ -19,6 +22,11 @@ const page = () => {
   // food prep ===========================
   const handleAssignFoodPrep = (staff: PantryStaff) => {
     setShowFoodPreparationModal(true);
+    setCurrentSelectedStaff(staff);
+  };
+
+  const handleAssignDeliveryTask = (staff: PantryStaff) => {
+    setShowFoodDeliveryTaskModal(true);
     setCurrentSelectedStaff(staff);
   };
 
@@ -59,6 +67,14 @@ const page = () => {
       {showFoodPreparationModal && (
         <AssignFoodPreparationModal
           onClose={setShowFoodPreparationModal}
+          onSuccess={handleSuccessStaffSave}
+          staff={currentSelectedStaff}
+        />
+      )}
+      {/* food prep modal ================================= */}
+      {showFoodDeliveryTaskModal && (
+        <AssignFoodDeliveryModal
+          onClose={setShowFoodDeliveryTaskModal}
           onSuccess={handleSuccessStaffSave}
           staff={currentSelectedStaff}
         />
@@ -114,18 +130,21 @@ const page = () => {
                       </button>
                     ) : (
                       <button className="text-green-600 text-center font-semibold hover:underline">
-                        View task
+                        View or remove task
                       </button>
                     )}
                   </td>
                   <td className="text-center">
                     {staff?.staffFoodDeliveryTask?.length === 0 ? (
-                      <button className="text-blue-600 text-center font-semibold hover:underline">
+                      <button
+                        className="text-blue-600 text-center font-semibold hover:underline"
+                        onClick={() => handleAssignDeliveryTask(staff)}
+                      >
                         Assign delivery task
                       </button>
                     ) : (
                       <button className="text-green-600 text-center font-semibold hover:underline">
-                        View task
+                        View or remove task
                       </button>
                     )}
                   </td>
